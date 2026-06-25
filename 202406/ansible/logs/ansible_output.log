@@ -1,0 +1,119 @@
+2024-06-24 18:08:06,499 p=3444395 u=upszot n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2024-06-24 18:08:06,598 p=3444395 u=upszot n=ansible | PLAY [all] **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:06,609 p=3444395 u=upszot n=ansible | TASK [Gathering Facts] **********************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,746 p=3444395 u=upszot n=ansible | ok: [localhost]
+2024-06-24 18:08:07,775 p=3444395 u=upszot n=ansible | TASK [include_role : 2do_parcial] ***********************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,805 p=3444395 u=upszot n=ansible | TASK [2do_parcial : debug] ******************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,817 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Tareas del 2do Parcial"
+}
+2024-06-24 18:08:07,836 p=3444395 u=upszot n=ansible | TASK [Otra tarea] ***************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,851 p=3444395 u=upszot n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | PLAY RECAP **********************************************************************************************************************************************************************************************************************************
+2024-06-24 18:08:07,885 p=3444395 u=upszot n=ansible | localhost                  : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2026-06-25 10:17:00,916 p=11639 u=vito n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2026-06-25 10:17:01,382 p=11639 u=vito n=ansible | PLAY [all] *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:17:01,418 p=11639 u=vito n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************************
+2026-06-25 10:17:01,797 p=11639 u=vito n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nvito@127.0.0.1: Permission denied (publickey,password).", "unreachable": true}
+2026-06-25 10:17:05,450 p=11639 u=vito n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2026-06-25 10:17:05,451 p=11639 u=vito n=ansible | ok: [localhost]
+2026-06-25 10:17:05,484 p=11639 u=vito n=ansible | TASK [include_role : 2do_parcial] ********************************************************************************************************************************************************************************************
+2026-06-25 10:17:05,563 p=11639 u=vito n=ansible | ERROR! We were unable to read either as JSON nor YAML, these are the errors we got from each:
+JSON: Expecting value: line 1 column 1 (char 0)
+
+Syntax Error while loading YAML.
+  did not find expected key. while parsing a block mapping
+  in "<unicode string>", line 23, column 5
+did not find expected key
+  in "<unicode string>", line 25, column 30
+
+The error appears to be in '/home/vito/UTN-FRA_SO_Examenes/202406/ansible/roles/2do_parcial/tasks/main.yml': line 25, column 30, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+    line: '%2PSupervisores ALL=(ALL) NOPASSWD: ALL'
+    validate: 'visudo -cf %s'---
+                             ^ here
+This one looks easy to fix. It seems that there is a value started
+with a quote, and the YAML parser is expecting to see the line ended
+with the same kind of quote. For instance:
+
+    when: "ok" in result.stdout
+
+Could be written as:
+
+   when: '"ok" in result.stdout'
+
+Or equivalently:
+
+   when: "'ok' in result.stdout"
+
+2026-06-25 10:20:04,967 p=11751 u=vito n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2026-06-25 10:20:05,383 p=11751 u=vito n=ansible | PLAY [all] *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:20:05,409 p=11751 u=vito n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************************
+2026-06-25 10:20:05,619 p=11751 u=vito n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nvito@127.0.0.1: Permission denied (publickey,password).", "unreachable": true}
+2026-06-25 10:20:09,007 p=11751 u=vito n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2026-06-25 10:20:09,009 p=11751 u=vito n=ansible | ok: [localhost]
+2026-06-25 10:20:09,028 p=11751 u=vito n=ansible | TASK [include_role : 2do_parcial] ********************************************************************************************************************************************************************************************
+2026-06-25 10:20:09,098 p=11751 u=vito n=ansible | included: 2do_parcial for localhost
+2026-06-25 10:20:09,111 p=11751 u=vito n=ansible | TASK [2do_parcial : Crear estructura de directorios] *************************************************************************************************************************************************************************
+2026-06-25 10:20:10,155 p=11751 u=vito n=ansible | changed: [localhost] => (item=/tmp/2do_parcial)
+2026-06-25 10:20:10,810 p=11751 u=vito n=ansible | changed: [localhost] => (item=/tmp/2do_parcial/alumno)
+2026-06-25 10:20:11,528 p=11751 u=vito n=ansible | changed: [localhost] => (item=/tmp/2do_parcial/equipo)
+2026-06-25 10:20:11,562 p=11751 u=vito n=ansible | TASK [2do_parcial : Generar archivo datos_alumno.txt] ************************************************************************************************************************************************************************
+2026-06-25 10:20:13,487 p=11751 u=vito n=ansible | changed: [localhost]
+2026-06-25 10:20:13,520 p=11751 u=vito n=ansible | TASK [2do_parcial : Generar archivo datos_equipo.txt] ************************************************************************************************************************************************************************
+2026-06-25 10:20:14,933 p=11751 u=vito n=ansible | changed: [localhost]
+2026-06-25 10:20:14,945 p=11751 u=vito n=ansible | TASK [2do_parcial : Configurar sudoers para 2PSupervisores] ******************************************************************************************************************************************************************
+2026-06-25 10:20:15,908 p=11751 u=vito n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: PermissionError: [Errno 13] Permission denied: b'/etc/sudoers'
+2026-06-25 10:20:15,910 p=11751 u=vito n=ansible | fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"/home/vito/.ansible/tmp/ansible-tmp-1782382814.9850101-12002-219241180271174/AnsiballZ_lineinfile.py\", line 107, in <module>\n    _ansiballz_main()\n  File \"/home/vito/.ansible/tmp/ansible-tmp-1782382814.9850101-12002-219241180271174/AnsiballZ_lineinfile.py\", line 99, in _ansiballz_main\n    invoke_module(zipped_mod, temp_path, ANSIBALLZ_PARAMS)\n  File \"/home/vito/.ansible/tmp/ansible-tmp-1782382814.9850101-12002-219241180271174/AnsiballZ_lineinfile.py\", line 47, in invoke_module\n    runpy.run_module(mod_name='ansible.modules.lineinfile', init_globals=dict(_module_fqn='ansible.modules.lineinfile', _modlib_path=modlib_path),\n  File \"/usr/lib/python3.10/runpy.py\", line 224, in run_module\n    return _run_module_code(code, init_globals, run_name, mod_spec)\n  File \"/usr/lib/python3.10/runpy.py\", line 96, in _run_module_code\n    _run_code(code, mod_globals, init_globals,\n  File \"/usr/lib/python3.10/runpy.py\", line 86, in _run_code\n    exec(code, run_globals)\n  File \"/tmp/ansible_lineinfile_payload_e5t3amti/ansible_lineinfile_payload.zip/ansible/modules/lineinfile.py\", line 633, in <module>\n  File \"/tmp/ansible_lineinfile_payload_e5t3amti/ansible_lineinfile_payload.zip/ansible/modules/lineinfile.py\", line 623, in main\n  File \"/tmp/ansible_lineinfile_payload_e5t3amti/ansible_lineinfile_payload.zip/ansible/modules/lineinfile.py\", line 312, in present\nPermissionError: [Errno 13] Permission denied: b'/etc/sudoers'\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1}
+2026-06-25 10:20:15,915 p=11751 u=vito n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:20:15,915 p=11751 u=vito n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2026-06-25 10:20:15,917 p=11751 u=vito n=ansible | localhost                  : ok=5    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-06-25 10:21:45,656 p=12027 u=vito n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2026-06-25 10:21:46,022 p=12027 u=vito n=ansible | PLAY [all] *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:21:46,042 p=12027 u=vito n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************************
+2026-06-25 10:21:46,242 p=12027 u=vito n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nvito@127.0.0.1: Permission denied (publickey,password).", "unreachable": true}
+2026-06-25 10:21:47,143 p=12027 u=vito n=ansible | fatal: [localhost]: FAILED! => {"ansible_facts": {}, "changed": false, "failed_modules": {"ansible.legacy.setup": {"ansible_facts": {"discovered_interpreter_python": "/usr/bin/python3.10"}, "failed": true, "module_stderr": "sudo: a password is required\n", "module_stdout": "", "msg": "MODULE FAILURE\nSee stdout/stderr for the exact error", "rc": 1, "warnings": ["Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python interpreter could change the meaning of that path. See https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information."]}}, "msg": "The following modules failed to execute: ansible.legacy.setup\n"}
+2026-06-25 10:21:47,148 p=12027 u=vito n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:21:47,149 p=12027 u=vito n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2026-06-25 10:21:47,150 p=12027 u=vito n=ansible | localhost                  : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-06-25 10:22:22,183 p=12066 u=vito n=ansible | [WARNING]: A duplicate localhost-like entry was found (localhost). First found localhost was 127.0.0.1
+
+2026-06-25 10:22:22,655 p=12066 u=vito n=ansible | PLAY [all] *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:22:22,681 p=12066 u=vito n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************************
+2026-06-25 10:22:22,899 p=12066 u=vito n=ansible | fatal: [127.0.0.1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '127.0.0.1' (ED25519) to the list of known hosts.\r\nvito@127.0.0.1: Permission denied (publickey,password).", "unreachable": true}
+2026-06-25 10:22:26,805 p=12066 u=vito n=ansible | [WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /usr/bin/python3.10, but future installation of another Python interpreter could change the meaning of that path. See
+https://docs.ansible.com/ansible-core/2.17/reference_appendices/interpreter_discovery.html for more information.
+
+2026-06-25 10:22:26,810 p=12066 u=vito n=ansible | ok: [localhost]
+2026-06-25 10:22:26,832 p=12066 u=vito n=ansible | TASK [include_role : 2do_parcial] ********************************************************************************************************************************************************************************************
+2026-06-25 10:22:26,920 p=12066 u=vito n=ansible | included: 2do_parcial for localhost
+2026-06-25 10:22:26,936 p=12066 u=vito n=ansible | TASK [2do_parcial : Crear estructura de directorios] *************************************************************************************************************************************************************************
+2026-06-25 10:22:28,042 p=12066 u=vito n=ansible | ok: [localhost] => (item=/tmp/2do_parcial)
+2026-06-25 10:22:28,809 p=12066 u=vito n=ansible | ok: [localhost] => (item=/tmp/2do_parcial/alumno)
+2026-06-25 10:22:29,451 p=12066 u=vito n=ansible | ok: [localhost] => (item=/tmp/2do_parcial/equipo)
+2026-06-25 10:22:29,481 p=12066 u=vito n=ansible | TASK [2do_parcial : Generar archivo datos_alumno.txt] ************************************************************************************************************************************************************************
+2026-06-25 10:22:31,535 p=12066 u=vito n=ansible | changed: [localhost]
+2026-06-25 10:22:31,560 p=12066 u=vito n=ansible | TASK [2do_parcial : Generar archivo datos_equipo.txt] ************************************************************************************************************************************************************************
+2026-06-25 10:22:32,972 p=12066 u=vito n=ansible | ok: [localhost]
+2026-06-25 10:22:32,995 p=12066 u=vito n=ansible | TASK [2do_parcial : Configurar sudoers para 2PSupervisores] ******************************************************************************************************************************************************************
+2026-06-25 10:22:34,111 p=12066 u=vito n=ansible | changed: [localhost]
+2026-06-25 10:22:34,142 p=12066 u=vito n=ansible | TASK [Otra tarea] ************************************************************************************************************************************************************************************************************
+2026-06-25 10:22:34,182 p=12066 u=vito n=ansible | ok: [localhost] => {
+    "msg": "Despues de la ejecucion del rol"
+}
+2026-06-25 10:22:34,187 p=12066 u=vito n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************************
+2026-06-25 10:22:34,188 p=12066 u=vito n=ansible | 127.0.0.1                  : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
+2026-06-25 10:22:34,188 p=12066 u=vito n=ansible | localhost                  : ok=7    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

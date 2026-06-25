@@ -1,0 +1,25 @@
+---
+- name: Crear estructura de directorios
+  file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - /tmp/2do_parcial
+    - /tmp/2do_parcial/alumno
+    - /tmp/2do_parcial/equipo
+
+- name: Generar archivo datos_alumno.txt
+  template:
+    src: datos_alumno.txt.j2
+    dest: /tmp/2do_parcial/alumno/datos_alumno.txt
+
+- name: Generar archivo datos_equipo.txt
+  template:
+    src: datos_equipo.txt.j2
+    dest: /tmp/2do_parcial/equipo/datos_equipo.txt
+
+- name: Configurar sudoers para 2PSupervisores
+  lineinfile:
+    path: /etc/sudoers
+    line: "%2PSupervisores ALL=(ALL) NOPASSWD: ALL"
+    validate: "visudo -cf %s"
