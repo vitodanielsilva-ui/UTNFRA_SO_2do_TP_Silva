@@ -114,3 +114,10 @@ nano ~/RTA_Examen_20260625/Punto_D.sh
 cp -r ~/UTN-FRA_SO_Examenes/202406/ ~/UTNFRA_SO_2do_TP_Silva/
 cp -r ~/RTA_Examen_20260625/ ~/UTNFRA_SO_2do_TP_Silva/
 history -a
+cp ~/.bash_history ~/UTNFRA_SO_2do_TP_Silva/
+cd ~/UTNFRA_SO_2do_TP_Silva/
+git add .
+git commit -m "2do TP - Silva"
+git push
+ls ~/RTA_Examen_20260625/
+history -a
